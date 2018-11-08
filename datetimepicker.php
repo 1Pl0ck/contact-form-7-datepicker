@@ -194,10 +194,13 @@ class CF7_DateTimePicker {
 	private function options_encode() {
 		$options = json_encode(array_filter(
 			$this->options,
-			create_function('$var', 'return ! empty($var);')
+			function($var){
+				return !empty($var);
+			}
 		));
 		return stripslashes($options);
 	}
+	
 
 	private function regionalize() {
 		$regional = self::get_regional_match();
